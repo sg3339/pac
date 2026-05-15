@@ -92,6 +92,10 @@ var blockedDomains = {
     "wa.me": 1, "whatsapp-plus.info": 1, "whatsapp-plus.me": 1, "whatsapp-plus.net": 1, "whatsapp.cc": 1,
     "whatsapp.com": 1, "whatsapp.info": 1, "whatsapp.net": 1, "whatsapp.org": 1, "whatsapp.tv": 1,
     "whatsappbrand.com": 1
+
+    
+    // --- прочее ---
+    "sponsor.ajay.app": 1, "2ip.ru": 1,
 };
 
 function FindProxyForURL(url, host) {
