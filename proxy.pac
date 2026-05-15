@@ -22,7 +22,7 @@ var youtubeDomains = {
 var blockedDomains = {
 
     "cloudflare.com": 1, "akamaized.net": 1, "akamaihd.net": 1, "akamaitechnologies.com": 1, "fastly.net": 1,
-    "cdn77.com": 1, "cloudfront.net": 1, "amazonaws.com": 1, "digitalocean.com": 1, "hetzner.com": 1,
+    "cdn77.com": 1, "cloudfront.net": 1, "amazonaws.com": 1, "digitalocean.com": 1, "hetzner.com": 1, "cloudflareinsights.com": 1,
 
     "1337x.st": 1, "1337x.to": 1, "appstorrent.ru": 1, "booktracker.org": 1,
     "katcr.to": 1, "katfile.com": 1, "kino.pub": 1, "kinozal.guru": 1, "kinozal.me": 1, "kinozal.tv": 1,
