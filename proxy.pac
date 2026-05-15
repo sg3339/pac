@@ -1,8 +1,5 @@
 // =============================================================================
 // proxy.pac — Clean & Optimized Edition
-// Оставлено только: Торренты (и их картинки), ИИ, Driver Booster, Spotify, 
-// TikTok, Instagram, Speedtest, VPN, 4pda, Файлообменники, WhatsApp, YouTube
-// и Эмуляторы.
 //
 // HTTP прокси:   192.168.0.30:18080
 // SOCKS5 прокси: 192.168.0.30:1080
@@ -59,9 +56,6 @@ var blockedDomains = {
 
     // --- Driver Booster ---
     "iobit.com": 1, "iobit.net": 1, "iobitdownloader.com": 1,
-
-    // --- Spotify ---
-    "audio-ak-spotify-com.akamaized.net": 1, "scdn.co": 1, "spoti.fi": 1, "spotify.com": 1, "spotifycdn.com": 1,
 
     // --- TikTok ---
     "bytecdn.com": 1, "bytedance.com": 1, "bytefcdn.com": 1, "bytegoofy.com": 1, "byteoversea.com": 1,
