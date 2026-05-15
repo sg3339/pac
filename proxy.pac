@@ -27,7 +27,7 @@ var blockedDomains = {
     "nnm-club.me": 1, "nnm-club.ru": 1, "nnmclub.to": 1, "nyaa.si": 1, "nyaa.tracker.wf": 1, "rarbg.to": 1,
     "rutor.info": 1, "rutor.is": 1, "rutracker.cc": 1, "rutracker.net": 1, "rutracker.org": 1, "rutracker.cc": 1,
     "seedoff.zannn.top": 1, "solidtorrents.to": 1, "torrent.by": 1, "torrentgalaxy.to": 1, "torrentino.ru": 1,
-    "tpb.party": 1, "thepiratebay.org": 1, "underver.se": 1, "uniongang.tv": 1, "riperam.org": 1,
+    "tpb.party": 1, "thepiratebay.org": 1, "underver.se": 1, "uniongang.tv": 1, "riperam.org": 1, "riper.online": 1,
 
     "fastpic.org": 1, "freeimage.host": 1, "ibb.co": 1, "imgbb.com": 1, "imgbox.com": 1, "imgur.com": 1,
     "imageban.net": 1, "imageban.ru": 1, "kartinko.org": 1, "lostpix.com": 1, "piccy.info": 1,
