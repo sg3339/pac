@@ -25,7 +25,7 @@ var blockedDomains = {
     "katcr.to": 1, "katfile.com": 1, "kino.pub": 1, "kinozal.guru": 1, "kinozal.me": 1, "kinozal.tv": 1,
     "limetorrents.lol": 1, "magnetdl.com": 1, "megapeer.org": 1, "megapeer.ru": 1, "megapeer.vip": 1,
     "nnm-club.me": 1, "nnm-club.ru": 1, "nnmclub.to": 1, "nyaa.si": 1, "nyaa.tracker.wf": 1, "rarbg.to": 1,
-    "rutor.info": 1, "rutor.is": 1, "rutracker.cc": 1, "rutracker.net": 1, "rutracker.org": 1, "rutracker.cc": 1,
+    "rutor.info": 1, "rutor.is": 1, "rutracker.cc": 1, "rutracker.net": 1, "rutracker.org": 1, "rutracker.cc": 1, "rutrk.org": 1,"rutracker.wiki": 1,
     "seedoff.zannn.top": 1, "solidtorrents.to": 1, "torrent.by": 1, "torrentgalaxy.to": 1, "torrentino.ru": 1,
     "tpb.party": 1, "thepiratebay.org": 1, "underver.se": 1, "uniongang.tv": 1, "riperam.org": 1, "riper.online": 1,
 
@@ -72,7 +72,7 @@ var blockedDomains = {
     "whatsapp.com": 1, "whatsapp.info": 1, "whatsapp.net": 1, "whatsapp.org": 1, "whatsapp.tv": 1,
     "whatsappbrand.com": 1,
 
-    "sponsor.ajay.app": 1, "2ip.ru": 1, "eden-emu.dev": 1
+    "sponsor.ajay.app": 1, "2ip.ru": 1, "t.me": 1, "eden-emu.dev": 1
 };
 
 function FindProxyForURL(url, host) {
