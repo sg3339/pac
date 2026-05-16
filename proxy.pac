@@ -62,6 +62,7 @@ var blockedDomains = {
     "nnm-club.me": 1,
     "nnm-club.ru": 1,
     "nnmclub.to": 1,
+    "nnmstatic.win": 1,
     "nyaa.si": 1,
     "nyaa.tracker.wf": 1,
     "rarbg.to": 1,
