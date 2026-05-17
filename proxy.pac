@@ -33,6 +33,8 @@ var blockedDomains = {
     "4pda.ru": 1,
     "4pda.to": 1,
     "happymod.ph": 1,
+    "themoviedb.org": 1,
+    "tmdb.org": 1,
 
     // ── ТОРРЕНТЫ ──
     "rutracker.org": 1,
