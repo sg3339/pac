@@ -69,8 +69,7 @@
       "listen": "127.0.0.1",
       "listen_port": 10800,
       "sniff": true,
-      "sniff_override_destination": false,
-      "udp_over_tcp": false
+      "sniff_override_destination": false
     }
   ],
   "outbounds": [
