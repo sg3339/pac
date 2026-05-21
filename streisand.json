@@ -1182,14 +1182,14 @@
     "domainStrategy": "IPIfNonMatch",
     "rules": [
       {
-        "_comment": "🔒 Блокировка QUIC — принуждаем приложения использовать обычный TLS, который Xray может анализировать",
+        "_comment": "Блокировка QUIC",
         "type": "field",
         "network": "udp",
         "port": "443",
         "outboundTag": "block"
       },
       {
-        "_comment": "🏠 Локальная сеть",
+        "_comment": "Локальная сеть напрямую",
         "type": "field",
         "ip": [
           "geoip:private"
@@ -1197,7 +1197,7 @@
         "outboundTag": "direct"
       },
       {
-        "_comment": "Opera",
+        "_comment": "Все сервисы, требующие обхода (AI, соцсети, торренты, файлообменники, мессенджеры и т.д.) → Opera",
         "type": "field",
         "domain": [
           "geosite:openai",
@@ -1294,7 +1294,7 @@
         "outboundTag": "opera"
       },
       {
-        "_comment": "ByeDPI",
+        "_comment": "Только YouTube и заблокированные CDN → ByeDPI",
         "type": "field",
         "domain": [
           "geosite:youtube",
@@ -1306,10 +1306,11 @@
         "outboundTag": "byedpi"
       },
       {
-        "_comment": "direct",
+        "_comment": "Всё остальное — напрямую",
         "type": "field",
         "network": "tcp,udp",
         "outboundTag": "direct"
       }
     ]
   }
+}
