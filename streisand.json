@@ -153,6 +153,7 @@
         "_comment": "Opera: все домены из re:filter",
         "type": "field",
         "domain": [
+          "domain:2ip.ru",
           "ext:geosite.dat:refilter"
         ],
         "outboundTag": "opera"
