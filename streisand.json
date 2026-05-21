@@ -1197,7 +1197,7 @@
         "outboundTag": "direct"
       },
       {
-        "_comment": "Все сервисы, требующие обхода (AI, соцсети, торренты, файлообменники, мессенджеры и т.д.) → Opera",
+        "_comment": "Все сервисы, требующие обхода → Opera",
         "type": "field",
         "domain": [
           "geosite:openai",
