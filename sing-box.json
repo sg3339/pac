@@ -1,0 +1,207 @@
+{
+  "log": {
+    "level": "warn",
+    "timestamp": true
+  },
+  "dns": {
+    "servers": [
+      {
+        "tag": "dns-google",
+        "address": "https://dns.google/dns-query",
+        "strategy": "ipv4_only"
+      },
+      {
+        "tag": "dns-cloudflare",
+        "address": "https://cloudflare-dns.com/dns-query",
+        "strategy": "ipv4_only"
+      },
+      {
+        "tag": "dns-local",
+        "address": "local"
+      }
+    ],
+    "rules": [
+      {
+        "outbound": "any",
+        "server": "dns-local"
+      },
+      {
+        "clash_mode": "Direct",
+        "server": "dns-local"
+      },
+      {
+        "rule_set": "refilter",
+        "server": "dns-google"
+      },
+      {
+        "domain_suffix": [
+          "youtube.com",
+          "youtu.be",
+          "googlevideo.com",
+          "ytimg.com",
+          "ggpht.com",
+          "youtube-nocookie.com",
+          "youtube-ui.l.google.com",
+          "youtube.googleapis.com",
+          "youtubeembeddedplayer.googleapis.com",
+          "youtubei.googleapis.com",
+          "youtubekids.com",
+          "yt.be",
+          "withyoutube.com",
+          "youtubeeducation.com",
+          "youtubefanfest.com",
+          "youtubegaming.com",
+          "youtubego.com",
+          "youtubemobilesupport.com",
+          "yt3.googleusercontent.com",
+          "wide-youtube.l.google.com"
+        ],
+        "server": "dns-google"
+      }
+    ],
+    "final": "dns-cloudflare",
+    "independent_cache": true
+  },
+  "inbounds": [
+    {
+      "tag": "socks-in",
+      "type": "socks",
+      "listen": "127.0.0.1",
+      "listen_port": 10800,
+      "sniff": true,
+      "sniff_override_destination": false,
+      "udp_over_tcp": false
+    }
+  ],
+  "outbounds": [
+    {
+      "tag": "direct",
+      "type": "direct",
+      "domain_strategy": "ipv4_only"
+    },
+    {
+      "tag": "byedpi",
+      "type": "socks",
+      "server": "192.168.0.30",
+      "server_port": 1080
+    },
+    {
+      "tag": "opera",
+      "type": "socks",
+      "server": "192.168.0.30",
+      "server_port": 1081
+    },
+    {
+      "tag": "block",
+      "type": "block"
+    },
+    {
+      "tag": "dns-out",
+      "type": "dns"
+    }
+  ],
+  "route": {
+    "rule_set": [
+      {
+        "tag": "refilter",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://github.com/warexify/sing-box-geosite/raw/refs/heads/main/rule/refilter.srs",
+        "download_detour": "direct",
+        "update_interval": "1d"
+      }
+    ],
+    "rules": [
+      {
+        "inbound": "socks-in",
+        "action": "sniff"
+      },
+      {
+        "protocol": "dns",
+        "outbound": "dns-out"
+      },
+      {
+        "_comment": "Блокировка QUIC для YouTube (принудительный TCP)",
+        "network": "udp",
+        "port": 443,
+        "domain_suffix": [
+          "youtube.com",
+          "youtu.be",
+          "googlevideo.com",
+          "ytimg.com",
+          "ggpht.com",
+          "youtube-nocookie.com",
+          "youtube-ui.l.google.com",
+          "youtube.googleapis.com",
+          "youtubeembeddedplayer.googleapis.com",
+          "youtubei.googleapis.com",
+          "youtubekids.com",
+          "yt.be",
+          "withyoutube.com",
+          "youtubeeducation.com",
+          "youtubefanfest.com",
+          "youtubegaming.com",
+          "youtubego.com",
+          "youtubemobilesupport.com",
+          "yt3.googleusercontent.com",
+          "wide-youtube.l.google.com"
+        ],
+        "outbound": "block"
+      },
+      {
+        "_comment": "Локальная сеть напрямую",
+        "ip_cidr": [
+          "10.0.0.0/8",
+          "172.16.0.0/12",
+          "192.168.0.0/16",
+          "127.0.0.0/8",
+          "169.254.0.0/16",
+          "224.0.0.0/4",
+          "::1/128",
+          "fc00::/7",
+          "fe80::/10"
+        ],
+        "outbound": "direct"
+      },
+      {
+        "_comment": "ByeDPI: YouTube",
+        "domain_suffix": [
+          "youtube.com",
+          "youtu.be",
+          "googlevideo.com",
+          "ytimg.com",
+          "ggpht.com",
+          "youtube-nocookie.com",
+          "youtube-ui.l.google.com",
+          "youtube.googleapis.com",
+          "youtubeembeddedplayer.googleapis.com",
+          "youtubei.googleapis.com",
+          "youtubekids.com",
+          "yt.be",
+          "withyoutube.com",
+          "youtubeeducation.com",
+          "youtubefanfest.com",
+          "youtubegaming.com",
+          "youtubego.com",
+          "youtubemobilesupport.com",
+          "yt3.googleusercontent.com",
+          "wide-youtube.l.google.com"
+        ],
+        "outbound": "byedpi"
+      },
+      {
+        "_comment": "Opera: 2ip.ru + re:filter",
+        "domain_suffix": [
+          "2ip.ru"
+        ],
+        "outbound": "opera"
+      },
+      {
+        "rule_set": "refilter",
+        "outbound": "opera"
+      }
+    ],
+    "final": "direct",
+    "auto_detect_interface": true
+  }
+}
