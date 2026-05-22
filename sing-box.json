@@ -18,25 +18,29 @@
       {
         "tag": "dns-google",
         "address": "https://dns.google/dns-query",
+        "address_resolver": "dns-bootstrap-cloudflare",
         "detour": "opera"
       },
       {
         "tag": "dns-cloudflare",
         "address": "https://cloudflare-dns.com/dns-query",
+        "address_resolver": "dns-bootstrap-google",
         "detour": "opera"
       }
     ],
     "rules": [
       {
-        "domain_suffix": ["dns.google", "google.com"],
+        "domain_suffix": [
+          "dns.google",
+          "google.com"
+        ],
         "server": "dns-bootstrap-cloudflare"
       },
       {
-        "domain_suffix": ["cloudflare-dns.com", "cloudflare.com"],
-        "server": "dns-bootstrap-google"
-      },
-      {
-        "outbound": "any",
+        "domain_suffix": [
+          "cloudflare-dns.com",
+          "cloudflare.com"
+        ],
         "server": "dns-bootstrap-google"
       }
     ],
@@ -91,7 +95,6 @@
         "action": "hijack-dns"
       },
       {
-        "comment": "Глобальная блокировка QUIC для ВСЕГО, что есть в списках refilter (YouTube, Instagram, TikTok, Gemini и т.д.)",
         "network": "udp",
         "port": 443,
         "rule_set": [
@@ -101,7 +104,6 @@
         "action": "reject"
       },
       {
-        "comment": "Блокировка QUIC для ручных прокси-доменов",
         "network": "udp",
         "port": 443,
         "domain_suffix": [
@@ -115,7 +117,6 @@
         "outbound": "direct"
       },
       {
-        "comment": "YouTube явно направляется в byedpi (ДО срабатывания правила refilter)",
         "domain_suffix": [
           "youtube.com",
           "youtu.be",
@@ -141,7 +142,6 @@
         "outbound": "byedpi"
       },
       {
-        "comment": "Ручные домены (проверка IP и эмулятор) -> opera",
         "domain_suffix": [
           "eden-emu.dev",
           "2ip.ru"
@@ -149,7 +149,6 @@
         "outbound": "opera"
       },
       {
-        "comment": "ВСЁ ОСТАЛЬНОЕ из списков refilter (Instagram, Gemini, TikTok, Discord и тысячи других) -> opera",
         "rule_set": [
           "refilter_domains",
           "refilter_ipsum"
