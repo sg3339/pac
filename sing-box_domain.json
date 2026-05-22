@@ -51,10 +51,10 @@
       "tag": "direct"
     },
     {
-      "type": "socks",
+      "type": "http",
       "tag": "opera",
       "server": "192.168.0.30",
-      "server_port": 1081
+      "server_port": 18080
     }
   ],
   "route": {
