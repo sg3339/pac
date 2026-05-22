@@ -6,170 +6,123 @@
   "dns": {
     "servers": [
       {
+        "tag": "dns-bootstrap-google",
+        "address": "8.8.8.8",
+        "detour": "direct"
+      },
+      {
+        "tag": "dns-bootstrap-cloudflare",
+        "address": "1.1.1.1",
+        "detour": "direct"
+      },
+      {
         "tag": "dns-google",
         "address": "https://dns.google/dns-query",
-        "strategy": "ipv4_only"
+        "detour": "opera"
       },
       {
         "tag": "dns-cloudflare",
         "address": "https://cloudflare-dns.com/dns-query",
-        "strategy": "ipv4_only"
-      },
-      {
-        "tag": "dns-local",
-        "address": "local"
+        "detour": "opera"
       }
     ],
     "rules": [
       {
+        "domain_suffix": ["dns.google", "google.com"],
+        "server": "dns-bootstrap-cloudflare"
+      },
+      {
+        "domain_suffix": ["cloudflare-dns.com", "cloudflare.com"],
+        "server": "dns-bootstrap-google"
+      },
+      {
         "outbound": "any",
-        "server": "dns-local"
-      },
-      {
-        "clash_mode": "Direct",
-        "server": "dns-local"
-      },
-      {
-        "rule_set": "refilter",
-        "server": "dns-google"
-      },
-      {
-        "domain_suffix": [
-          "youtube.com",
-          "youtu.be",
-          "googlevideo.com",
-          "ytimg.com",
-          "ggpht.com",
-          "youtube-nocookie.com",
-          "youtube-ui.l.google.com",
-          "youtube.googleapis.com",
-          "youtubeembeddedplayer.googleapis.com",
-          "youtubei.googleapis.com",
-          "youtubekids.com",
-          "yt.be",
-          "withyoutube.com",
-          "youtubeeducation.com",
-          "youtubefanfest.com",
-          "youtubegaming.com",
-          "youtubego.com",
-          "youtubemobilesupport.com",
-          "yt3.googleusercontent.com",
-          "wide-youtube.l.google.com"
-        ],
-        "server": "dns-google"
+        "server": "dns-bootstrap-google"
       }
     ],
-    "final": "dns-cloudflare",
+    "final": "dns-google",
+    "strategy": "ipv4_only",
     "independent_cache": true
   },
   "inbounds": [
     {
-      "tag": "socks-in",
-      "type": "socks",
-      "listen": "127.0.0.1",
-      "listen_port": 10800,
+      "type": "tun",
+      "tag": "tun-in",
+      "interface_name": "utun0",
+      "address": "172.19.0.1/30",
+      "mtu": 1420,
+      "auto_route": true,
+      "strict_route": false,
+      "endpoint_independent_nat": true,
+      "stack": "system",
       "sniff": true,
-      "sniff_override_destination": false
+      "sniff_override_destination": true
     }
   ],
   "outbounds": [
     {
-      "tag": "direct",
       "type": "direct",
-      "domain_strategy": "ipv4_only"
+      "tag": "direct"
     },
     {
-      "tag": "byedpi",
       "type": "socks",
+      "tag": "byedpi",
       "server": "192.168.0.30",
       "server_port": 1080
     },
     {
-      "tag": "opera",
       "type": "socks",
+      "tag": "opera",
       "server": "192.168.0.30",
       "server_port": 1081
-    },
-    {
-      "tag": "block",
-      "type": "block"
-    },
-    {
-      "tag": "dns-out",
-      "type": "dns"
     }
   ],
   "route": {
-    "rule_set": [
-      {
-        "tag": "refilter",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://github.com/warexify/sing-box-geosite/raw/refs/heads/main/rule/refilter.srs",
-        "download_detour": "direct",
-        "update_interval": "1d"
-      }
-    ],
     "rules": [
       {
-        "inbound": "socks-in",
         "action": "sniff"
       },
       {
-        "protocol": "dns",
-        "outbound": "dns-out"
+        "action": "resolve",
+        "strategy": "ipv4_only"
       },
       {
-        "_comment": "Блокировка QUIC для YouTube (принудительный TCP)",
+        "protocol": "dns",
+        "action": "hijack-dns"
+      },
+      {
+        "comment": "Глобальная блокировка QUIC для ВСЕГО, что есть в списках refilter (YouTube, Instagram, TikTok, Gemini и т.д.)",
+        "network": "udp",
+        "port": 443,
+        "rule_set": [
+          "refilter_domains",
+          "refilter_ipsum"
+        ],
+        "action": "reject"
+      },
+      {
+        "comment": "Блокировка QUIC для ручных прокси-доменов",
         "network": "udp",
         "port": 443,
         "domain_suffix": [
-          "youtube.com",
-          "youtu.be",
-          "googlevideo.com",
-          "ytimg.com",
-          "ggpht.com",
-          "youtube-nocookie.com",
-          "youtube-ui.l.google.com",
-          "youtube.googleapis.com",
-          "youtubeembeddedplayer.googleapis.com",
-          "youtubei.googleapis.com",
-          "youtubekids.com",
-          "yt.be",
-          "withyoutube.com",
-          "youtubeeducation.com",
-          "youtubefanfest.com",
-          "youtubegaming.com",
-          "youtubego.com",
-          "youtubemobilesupport.com",
-          "yt3.googleusercontent.com",
-          "wide-youtube.l.google.com"
+          "eden-emu.dev",
+          "2ip.ru"
         ],
-        "outbound": "block"
+        "action": "reject"
       },
       {
-        "_comment": "Локальная сеть напрямую",
-        "ip_cidr": [
-          "10.0.0.0/8",
-          "172.16.0.0/12",
-          "192.168.0.0/16",
-          "127.0.0.0/8",
-          "169.254.0.0/16",
-          "224.0.0.0/4",
-          "::1/128",
-          "fc00::/7",
-          "fe80::/10"
-        ],
+        "ip_is_private": true,
         "outbound": "direct"
       },
       {
-        "_comment": "ByeDPI: YouTube",
+        "comment": "YouTube явно направляется в byedpi (ДО срабатывания правила refilter)",
         "domain_suffix": [
           "youtube.com",
           "youtu.be",
           "googlevideo.com",
           "ytimg.com",
           "ggpht.com",
+          "wide-youtube.l.google.com",
           "youtube-nocookie.com",
           "youtube-ui.l.google.com",
           "youtube.googleapis.com",
@@ -183,24 +136,50 @@
           "youtubegaming.com",
           "youtubego.com",
           "youtubemobilesupport.com",
-          "yt3.googleusercontent.com",
-          "wide-youtube.l.google.com"
+          "yt3.googleusercontent.com"
         ],
         "outbound": "byedpi"
       },
       {
-        "_comment": "Opera: 2ip.ru + re:filter",
+        "comment": "Ручные домены (проверка IP и эмулятор) -> opera",
         "domain_suffix": [
+          "eden-emu.dev",
           "2ip.ru"
         ],
         "outbound": "opera"
       },
       {
-        "rule_set": "refilter",
+        "comment": "ВСЁ ОСТАЛЬНОЕ из списков refilter (Instagram, Gemini, TikTok, Discord и тысячи других) -> opera",
+        "rule_set": [
+          "refilter_domains",
+          "refilter_ipsum"
+        ],
         "outbound": "opera"
+      }
+    ],
+    "rule_set": [
+      {
+        "tag": "refilter_domains",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://github.com/1andrevich/Re-filter-lists/releases/latest/download/ruleset-domain-refilter_domains.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "refilter_ipsum",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://github.com/1andrevich/Re-filter-lists/releases/latest/download/ruleset-ip-refilter_ipsum.srs",
+        "download_detour": "direct"
       }
     ],
     "final": "direct",
     "auto_detect_interface": true
+  },
+  "experimental": {
+    "cache_file": {
+      "enabled": true,
+      "path": "cache.db"
+    }
   }
 }
