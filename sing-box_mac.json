@@ -19,9 +19,7 @@
     ],
     "rules": [
       {
-        "domain_suffix": [
-          "dns.google"
-        ],
+        "domain_suffix": ["dns.google"],
         "server": "dns-bootstrap"
       }
     ],
@@ -33,10 +31,11 @@
     {
       "type": "tun",
       "tag": "tun-in",
+      "interface_name": "utun4",
       "address": "172.19.0.1/30",
-      "mtu": 1500,
+      "mtu": 1420,
       "auto_route": true,
-      "strict_route": true,
+      "strict_route": false,
       "stack": "gvisor",
       "sniff": true,
       "sniff_override_destination": true,
@@ -46,17 +45,19 @@
   "outbounds": [
     {
       "type": "direct",
-      "tag": "direct"
+      "tag": "direct",
+      "bind_interface": "en0"
     },
     {
       "type": "http",
       "tag": "opera",
       "server": "192.168.0.30",
-      "server_port": 18080
+      "server_port": 18080,
+      "bind_interface": "en0"
     }
   ],
   "route": {
-    "auto_detect_interface": true,
+    "auto_detect_interface": false,
     "rules": [
       {
         "ip_is_private": true,
@@ -78,7 +79,8 @@
         "tag": "proxied-domains",
         "type": "remote",
         "format": "binary",
-        "url": "https://raw.githubusercontent.com/sg3339/pac/refs/heads/main/domains_all.srs"
+        "url": "https://raw.githubusercontent.com/sg3339/pac/refs/heads/main/domains_all.srs",
+        "download_detour": "direct"
       }
     ],
     "final": "direct"
