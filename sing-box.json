@@ -6,8 +6,14 @@
   "dns": {
     "servers": [
       {
+        "tag": "dns-bootstrap",
+        "address": "8.8.8.8",
+        "detour": "direct"
+      },
+      {
         "tag": "dns-google",
         "address": "https://dns.google/dns-query",
+        "address_resolver": "dns-bootstrap",
         "detour": "direct"
       }
     ],
