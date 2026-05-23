@@ -17,6 +17,12 @@
         "detour": "direct"
       }
     ],
+    "rules": [
+      {
+        "domain_suffix": ["dns.google", "google.com"],
+        "server": "dns-bootstrap"
+      }
+    ],
     "final": "dns-google",
     "strategy": "ipv4_only"
   },
