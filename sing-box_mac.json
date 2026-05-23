@@ -78,9 +78,9 @@
     "rule_set": [
       {
         "tag": "proxied-domains",
-        "type": "local",
+        "type": "remote",
         "format": "source",
-        "path": "proxied-domains.json"
+        "url": "https://raw.githubusercontent.com/sg3339/pac/refs/heads/main/domains_all.lst"
       }
     ],
     "final": "direct"
