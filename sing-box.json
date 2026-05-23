@@ -6,36 +6,20 @@
   "dns": {
     "servers": [
       {
-        "tag": "dns-bootstrap",
-        "address": "8.8.8.8",
-        "detour": "direct"
-      },
-      {
-        "tag": "dns-google",
-        "address": "https://dns.google/dns-query",
-        "address_resolver": "dns-bootstrap",
+        "tag": "remote",
+        "address": "https://1.1.1.1/dns-query",
         "detour": "direct"
       }
     ],
-    "rules": [
-      {
-        "domain_suffix": ["dns.google", "google.com"],
-        "server": "dns-bootstrap"
-      }
-    ],
-    "final": "dns-google",
     "strategy": "ipv4_only"
   },
   "inbounds": [
     {
       "type": "tun",
       "tag": "tun-in",
-      "interface_name": "utun0",
       "address": "172.19.0.1/30",
-      "mtu": 1420,
       "auto_route": true,
       "strict_route": false,
-      "endpoint_independent_nat": true,
       "stack": "system",
       "sniff": true,
       "sniff_override_destination": true
@@ -48,7 +32,7 @@
     },
     {
       "type": "http",
-      "tag": "opera",
+      "tag": "opera-proxy",
       "server": "192.168.0.30",
       "server_port": 18080
     }
@@ -56,15 +40,55 @@
   "route": {
     "rules": [
       {
-        "action": "sniff"
+        "action": "hijack-dns",
+        "protocol": "dns"
       },
       {
-        "ip_is_private": true,
+        "port": 53,
+        "action": "hijack-dns"
+      },
+      {
+        "ip_cidr": [
+          "31.13.0.0/16",
+          "157.240.0.0/16",
+          "179.60.192.0/22",
+          "185.60.216.0/22",
+          "45.64.40.0/22",
+          "57.144.0.0/16",
+          "129.134.0.0/16",
+          "173.252.64.0/18",
+          "69.171.234.0/23",
+          "66.220.144.0/20",
+          "69.63.176.0/20",
+          "102.132.96.0/20",
+          "185.8.104.0/22",
+          "91.108.4.0/22",
+          "91.108.8.0/22",
+          "91.108.12.0/22",
+          "91.108.16.0/22",
+          "91.108.20.0/22",
+          "91.108.56.0/22",
+          "149.154.160.0/20",
+          "185.76.151.0/24"
+        ],
+        "network": "udp",
+        "action": "reject"
+      },
+      {
+        "protocol": "quic",
+        "action": "reject"
+      },
+      {
+        "ip_cidr": [
+          "192.168.0.0/16",
+          "10.0.0.0/8",
+          "100.64.0.0/10",
+          "127.0.0.0/8",
+          "fe80::/10"
+        ],
         "outbound": "direct"
       },
       {
-        "network": "udp",
-        "port": 443,
         "domain_suffix": [
           "2ip.ru", "ajay.app", "eden-emu.dev", "4pda.ru", "4pda.to", "happymod.ph", "themoviedb.org", "tmdb.org",
           "rutracker.org", "rutracker.net", "rutracker.cc", "rutracker.wiki", "rutrk.org", "rutracker.nl", "rutracker.club", "rutracker.me", "rutracker.im",
@@ -101,6 +125,7 @@
           "intel.com", "iobit.com", "iobit.net", "iobitdownloader.com", "ninite.com", "chocolatey.org", "github.com", "githubusercontent.com", "githubassets.com", "github.io", "sourceforge.net", "softpedia.com", "filehippo.com", "win-rar.com", "rarlab.com",
           "habr.com", "habr.ru", "habrastorage.org", "hsto.org", "habracdn.net", "habrahabr.ru"
         ],
+        "network": "udp",
         "action": "reject"
       },
       {
@@ -140,16 +165,10 @@
           "intel.com", "iobit.com", "iobit.net", "iobitdownloader.com", "ninite.com", "chocolatey.org", "github.com", "githubusercontent.com", "githubassets.com", "github.io", "sourceforge.net", "softpedia.com", "filehippo.com", "win-rar.com", "rarlab.com",
           "habr.com", "habr.ru", "habrastorage.org", "hsto.org", "habracdn.net", "habrahabr.ru"
         ],
-        "outbound": "opera"
+        "outbound": "opera-proxy"
       }
     ],
     "final": "direct",
     "auto_detect_interface": true
-  },
-  "experimental": {
-    "cache_file": {
-      "enabled": true,
-      "path": "cache.db"
-    }
   }
 }
