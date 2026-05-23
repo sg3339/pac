@@ -19,7 +19,9 @@
     ],
     "rules": [
       {
-        "domain_suffix": ["dns.google"],
+        "domain_suffix": [
+          "dns.google"
+        ],
         "server": "dns-bootstrap"
       }
     ],
@@ -79,8 +81,8 @@
       {
         "tag": "proxied-domains",
         "type": "remote",
-        "format": "source",
-        "url": "https://raw.githubusercontent.com/sg3339/pac/refs/heads/main/domains_all.lst"
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/sg3339/pac/refs/heads/main/domains_all.srs"
       }
     ],
     "final": "direct"
