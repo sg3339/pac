@@ -6,15 +6,26 @@
   "dns": {
     "servers": [
       {
-        "tag": "dns-bootstrap",
+        "tag": "dns-bootstrap-comss",
         "address": "83.220.169.155",
+        "detour": "direct"
+      },
+      {
+        "tag": "dns-bootstrap-google",
+        "address": "8.8.8.8",
         "detour": "direct"
       },
       {
         "tag": "dns-comss",
         "address": "https://dns.comss.one/dns-query",
-        "address_resolver": "dns-bootstrap",
+        "address_resolver": "dns-bootstrap-comss",
         "detour": "opera"
+      },
+      {
+        "tag": "dns-google",
+        "address": "https://dns.google/dns-query",
+        "address_resolver": "dns-bootstrap-google",
+        "detour": "direct"
       }
     ],
     "rules": [
@@ -23,10 +34,21 @@
           "dns.comss.one",
           "comss.one"
         ],
-        "server": "dns-bootstrap"
+        "server": "dns-bootstrap-comss"
+      },
+      {
+        "domain_suffix": [
+          "dns.google",
+          "google.com"
+        ],
+        "server": "dns-bootstrap-google"
+      },
+      {
+        "outbound": "opera",
+        "server": "dns-comss"
       }
     ],
-    "final": "dns-comss",
+    "final": "dns-google",
     "strategy": "ipv4_only",
     "independent_cache": true
   },
@@ -91,8 +113,12 @@
           "rutracker.cc",
           "rutracker.wiki",
           "rutrk.org",
+          "rutracker.nl",
+          "rutracker.club",
           "rutor.info",
           "rutor.is",
+          "rutor.lib",
+          "rutor.black",
           "riperam.org",
           "riper.online",
           "1337x.to",
@@ -169,11 +195,13 @@
           "ai.com",
           "oaistatic.com",
           "oaiusercontent.com",
+          "chat.openai.com",
           "openaiapi-site.azureedge.net",
           "openaicom-api-bdcpf8c6d2e9atf6.z01.azurefd.net",
           "openaicom.imgix.net",
           "openaicomproductionae4b.blob.core.windows.net",
           "production-openaicom-storage.azureedge.net",
+          "cdn.oaistatic.com",
           "anthropic.com",
           "claude.ai",
           "gemini.google.com",
@@ -259,6 +287,12 @@
           "threads.net",
           "messenger.com",
           "t.me",
+          "telegram.org",
+          "telegram.me",
+          "tdesktop.com",
+          "telegra.ph",
+          "telesco.pe",
+          "cdn-telegram.org",
           "wa.me",
           "whatsapp.com",
           "whatsapp.net",
@@ -332,8 +366,12 @@
           "rutracker.cc",
           "rutracker.wiki",
           "rutrk.org",
+          "rutracker.nl",
+          "rutracker.club",
           "rutor.info",
           "rutor.is",
+          "rutor.lib",
+          "rutor.black",
           "riperam.org",
           "riper.online",
           "1337x.to",
@@ -410,11 +448,13 @@
           "ai.com",
           "oaistatic.com",
           "oaiusercontent.com",
+          "chat.openai.com",
           "openaiapi-site.azureedge.net",
           "openaicom-api-bdcpf8c6d2e9atf6.z01.azurefd.net",
           "openaicom.imgix.net",
           "openaicomproductionae4b.blob.core.windows.net",
           "production-openaicom-storage.azureedge.net",
+          "cdn.oaistatic.com",
           "anthropic.com",
           "claude.ai",
           "gemini.google.com",
@@ -500,6 +540,12 @@
           "threads.net",
           "messenger.com",
           "t.me",
+          "telegram.org",
+          "telegram.me",
+          "tdesktop.com",
+          "telegra.ph",
+          "telesco.pe",
+          "cdn-telegram.org",
           "wa.me",
           "whatsapp.com",
           "whatsapp.net",
