@@ -6,8 +6,14 @@
   "dns": {
     "servers": [
       {
-        "tag": "remote",
-        "address": "https://1.1.1.1/dns-query",
+        "tag": "google",
+        "address": "https://dns.google/dns-query",
+        "address_resolver": "bootstrap",
+        "detour": "direct"
+      },
+      {
+        "tag": "bootstrap",
+        "address": "8.8.8.8",
         "detour": "direct"
       }
     ],
@@ -61,15 +67,7 @@
           "66.220.144.0/20",
           "69.63.176.0/20",
           "102.132.96.0/20",
-          "185.8.104.0/22",
-          "91.108.4.0/22",
-          "91.108.8.0/22",
-          "91.108.12.0/22",
-          "91.108.16.0/22",
-          "91.108.20.0/22",
-          "91.108.56.0/22",
-          "149.154.160.0/20",
-          "185.76.151.0/24"
+          "185.8.104.0/22"
         ],
         "network": "udp",
         "action": "reject"
@@ -116,7 +114,7 @@
           "kartinko.org", "fastpic.org", "fastpic.ru", "freeimage.host", "ibb.co", "imgbb.com", "imgbox.com", "imgur.com", "imgur.io", "imageban.net", "imageban.ru", "lostpix.com", "piccy.info", "piccy.ru", "picflash.net", "picsur.org", "postimages.org", "postimg.cc", "prnt.sc", "prntscr.com", "ptpimg.me", "radikal.host", "radikal.ru", "savepic.su", "yapx.ru", "catbox.moe", "gyazo.com", "monosnap.com", "snipboard.io", "take.ms", "joxi.net", "joxi.ru", "lightshot.app", "pixeldrain.com",
           "tiktok.com", "tiktokcdn.com", "tiktokcdn-eu.com", "tiktokcdn-us.com", "tiktokd.net", "tiktokd.org", "tiktokeu-cdn.com", "tiktokglobalshop.com", "tiktokmusic.app", "tiktokrow-cdn.com", "tiktokv.com", "tiktokv.eu", "tiktokv.us", "tiktokw.eu", "tiktokw.us", "tik-tok.com", "tik-tokapi.com", "ttlivecdn.com", "ttoverseaus.net", "ttwstatic.com", "musical.ly", "muscdn.com", "bytedance.com", "bytecdn.com", "bytefcdn.com", "bytegoofy.com", "byteoversea.com", "byteoversea.net", "bytetcdn.com", "douyinpic.com", "ibytedtos.com", "ipstatp.com", "isnssdk.com", "pstatp.com", "sgsnssdk.com", "snssdk.com", "volces.com", "capcut.com", "capcut.net",
           "instagram.com", "cdninstagram.com", "fbcdn.net", "fbsbx.com", "facebook.com", "facebook.net", "fb.com", "fb.me", "ig.me", "igcdn.com", "igtv.com", "instagram-brand.com", "threads.net", "messenger.com",
-          "t.me", "telegram.org", "telegram.me", "tdesktop.com", "telegra.ph", "telesco.pe", "cdn-telegram.org",
+          "t.me",
           "wa.me", "whatsapp.com", "whatsapp.net",
           "spotify.com", "scdn.co", "spotifycdn.com", "spoti.fi", "spotify.app.link",
           "speedtest.net", "ookla.com",
@@ -156,7 +154,7 @@
           "kartinko.org", "fastpic.org", "fastpic.ru", "freeimage.host", "ibb.co", "imgbb.com", "imgbox.com", "imgur.com", "imgur.io", "imageban.net", "imageban.ru", "lostpix.com", "piccy.info", "piccy.ru", "picflash.net", "picsur.org", "postimages.org", "postimg.cc", "prnt.sc", "prntscr.com", "ptpimg.me", "radikal.host", "radikal.ru", "savepic.su", "yapx.ru", "catbox.moe", "gyazo.com", "monosnap.com", "snipboard.io", "take.ms", "joxi.net", "joxi.ru", "lightshot.app", "pixeldrain.com",
           "tiktok.com", "tiktokcdn.com", "tiktokcdn-eu.com", "tiktokcdn-us.com", "tiktokd.net", "tiktokd.org", "tiktokeu-cdn.com", "tiktokglobalshop.com", "tiktokmusic.app", "tiktokrow-cdn.com", "tiktokv.com", "tiktokv.eu", "tiktokv.us", "tiktokw.eu", "tiktokw.us", "tik-tok.com", "tik-tokapi.com", "ttlivecdn.com", "ttoverseaus.net", "ttwstatic.com", "musical.ly", "muscdn.com", "bytedance.com", "bytecdn.com", "bytefcdn.com", "bytegoofy.com", "byteoversea.com", "byteoversea.net", "bytetcdn.com", "douyinpic.com", "ibytedtos.com", "ipstatp.com", "isnssdk.com", "pstatp.com", "sgsnssdk.com", "snssdk.com", "volces.com", "capcut.com", "capcut.net",
           "instagram.com", "cdninstagram.com", "fbcdn.net", "fbsbx.com", "facebook.com", "facebook.net", "fb.com", "fb.me", "ig.me", "igcdn.com", "igtv.com", "instagram-brand.com", "threads.net", "messenger.com",
-          "t.me", "telegram.org", "telegram.me", "tdesktop.com", "telegra.ph", "telesco.pe", "cdn-telegram.org",
+          "t.me",
           "wa.me", "whatsapp.com", "whatsapp.net",
           "spotify.com", "scdn.co", "spotifycdn.com", "spoti.fi", "spotify.app.link",
           "speedtest.net", "ookla.com",
