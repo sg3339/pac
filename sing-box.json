@@ -24,6 +24,7 @@
       "type": "tun",
       "tag": "tun-in",
       "address": "172.19.0.1/30",
+      "mtu": 1400,
       "auto_route": true,
       "strict_route": false,
       "stack": "system",
@@ -54,37 +55,48 @@
         "action": "hijack-dns"
       },
       {
+        "domain_suffix": [
+          "apple.com", "apple-dns.net", "apple-cloudkit.com", "apple-mapkit.com", "apple.news",
+          "aaplimg.com", "cdn-apple.com", "icloud.com", "icloud-content.com", "mzstatic.com",
+          "itunes.com", "me.com", "mac.com", "shazam.com", "darksky.net",
+          "youtube.com", "youtu.be", "googlevideo.com", "ytimg.com", "ggpht.com",
+          "wide-youtube.l.google.com", "youtube-nocookie.com", "youtube-ui.l.google.com",
+          "youtube.googleapis.com", "youtubeembeddedplayer.googleapis.com", "youtubei.googleapis.com",
+          "youtubekids.com", "yt.be", "withyoutube.com", "youtubeeducation.com",
+          "youtubefanfest.com", "youtubegaming.com", "youtubego.com", "youtubemobilesupport.com",
+          "yt3.googleusercontent.com", "googleusercontent.com", "gstatic.com", "googleapis.com"
+        ],
+        "outbound": "direct"
+      },
+      {
         "ip_cidr": [
-          "31.13.0.0/16",
-          "157.240.0.0/16",
-          "179.60.192.0/22",
-          "185.60.216.0/22",
-          "45.64.40.0/22",
-          "57.144.0.0/16",
-          "129.134.0.0/16",
-          "173.252.64.0/18",
-          "69.171.234.0/23",
-          "66.220.144.0/20",
-          "69.63.176.0/20",
-          "102.132.96.0/20",
-          "185.8.104.0/22"
+          "31.13.0.0/16", "157.240.0.0/16", "179.60.192.0/22", "185.60.216.0/22",
+          "45.64.40.0/22", "57.144.0.0/16", "129.134.0.0/16", "173.252.64.0/18",
+          "69.171.224.0/19", "69.171.234.0/23", "66.220.144.0/20", "69.63.176.0/20",
+          "102.132.96.0/20", "185.8.104.0/22", "103.4.96.0/22", "185.112.28.0/22",
+          "185.131.176.0/22", "185.167.176.0/22"
         ],
         "network": "udp",
         "action": "reject"
       },
       {
-        "protocol": "quic",
-        "action": "reject"
-      },
-      {
         "ip_cidr": [
-          "192.168.0.0/16",
-          "10.0.0.0/8",
-          "100.64.0.0/10",
-          "127.0.0.0/8",
-          "fe80::/10"
+          "192.168.0.0/16", "10.0.0.0/8", "100.64.0.0/10", "127.0.0.0/8", "fe80::/10"
         ],
         "outbound": "direct"
+      },
+      {
+        "domain_suffix": [
+          "openai.com", "chatgpt.com", "chat.openai.com", "oaistatic.com", "oaiusercontent.com",
+          "anthropic.com", "claude.ai", "perplexity.ai", "pplx.ai",
+          "gemini.google.com", "bard.google.com", "deepmind.com", "deepmind.google", "aistudio.google.com",
+          "generativelanguage.googleapis.com", "alkalimakersuite-pa.clients6.google.com",
+          "copilot.microsoft.com", "edgeservices.bing.com", "sydney.bing.com",
+          "grok.com", "x.ai", "x.com", "twitter.com", "twimg.com",
+          "meta.ai", "huggingface.co", "hf.co", "mistral.ai", "midjourney.com", "cohere.com", "stability.ai"
+        ],
+        "network": "udp",
+        "action": "reject"
       },
       {
         "domain_suffix": [
@@ -116,7 +128,7 @@
           "instagram.com", "cdninstagram.com", "fbcdn.net", "fbsbx.com", "facebook.com", "facebook.net", "fb.com", "fb.me", "ig.me", "igcdn.com", "igtv.com", "instagram-brand.com", "threads.net", "messenger.com",
           "t.me",
           "wa.me", "whatsapp.com", "whatsapp.net",
-          "spotify.com", "scdn.co", "spotifycdn.com", "spoti.fi", "spotify.app.link",
+          "spotify.com", "scdn.co", "spotifycdn.com", "spoti.fi", "spotify.app.link", "spotify.map.fastly.net",
           "speedtest.net", "ookla.com",
           "antizapret.prostovpn.org", "astrill.com", "cyberghostvpn.com", "expressvpn.com", "getoutline.org", "outline.org", "hide.me", "ipburger.com", "ipvanish.com", "lantern.io", "mullvad.net", "nordaccount.com", "nordcdn.com", "nordvpn.com", "pia.com", "privateinternetaccess.com", "protonvpn.com", "psiphon.ca", "purevpn.com", "surfshark.com", "tunnelbear.com", "windscribe.com",
           "1fichier.com", "fex.net", "gofile.io", "mega.co.nz", "mega.io", "mega.nz", "mediafire.com", "rapidgator.net", "ufile.io",
@@ -128,6 +140,14 @@
       },
       {
         "domain_suffix": [
+          "openai.com", "chatgpt.com", "chat.openai.com", "oaistatic.com", "oaiusercontent.com", "openaiapi-site.azureedge.net", "platform.openai.com", "openai.freshdesk.com",
+          "anthropic.com", "claude.ai", "anthropic-api.com",
+          "perplexity.ai", "pplx.ai",
+          "gemini.google.com", "bard.google.com", "deepmind.com", "deepmind.google", "aistudio.google.com", "generativelanguage.googleapis.com", "alkalimakersuite-pa.clients6.google.com",
+          "copilot.microsoft.com", "edgeservices.bing.com", "sydney.bing.com", "designer.microsoft.com", "bing.com", "bing.net",
+          "grok.com", "x.ai", "x.com", "twitter.com", "twimg.com",
+          "meta.ai", "huggingface.co", "hf.co", "mistral.ai", "chat.mistral.ai", "midjourney.com", "cohere.com", "stability.ai",
+          
           "2ip.ru", "ajay.app", "eden-emu.dev", "4pda.ru", "4pda.to", "happymod.ph", "themoviedb.org", "tmdb.org",
           "rutracker.org", "rutracker.net", "rutracker.cc", "rutracker.wiki", "rutrk.org", "rutracker.nl", "rutracker.club", "rutracker.me", "rutracker.im",
           "rutor.info", "rutor.is", "rutor.lib", "rutor.black", "rutor.cc", "rutor.in",
@@ -156,7 +176,7 @@
           "instagram.com", "cdninstagram.com", "fbcdn.net", "fbsbx.com", "facebook.com", "facebook.net", "fb.com", "fb.me", "ig.me", "igcdn.com", "igtv.com", "instagram-brand.com", "threads.net", "messenger.com",
           "t.me",
           "wa.me", "whatsapp.com", "whatsapp.net",
-          "spotify.com", "scdn.co", "spotifycdn.com", "spoti.fi", "spotify.app.link",
+          "spotify.com", "scdn.co", "spotifycdn.com", "spoti.fi", "spotify.app.link", "spotify.map.fastly.net",
           "speedtest.net", "ookla.com",
           "antizapret.prostovpn.org", "astrill.com", "cyberghostvpn.com", "expressvpn.com", "getoutline.org", "outline.org", "hide.me", "ipburger.com", "ipvanish.com", "lantern.io", "mullvad.net", "nordaccount.com", "nordcdn.com", "nordvpn.com", "pia.com", "privateinternetaccess.com", "protonvpn.com", "psiphon.ca", "purevpn.com", "surfshark.com", "tunnelbear.com", "windscribe.com",
           "1fichier.com", "fex.net", "gofile.io", "mega.co.nz", "mega.io", "mega.nz", "mediafire.com", "rapidgator.net", "ufile.io",
