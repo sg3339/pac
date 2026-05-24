@@ -56,7 +56,6 @@
         "action": "hijack-dns"
       },
       {
-        "comment": "КРОССПЛАТФОРМЕННАЯ ЛОКАЛЬНАЯ СЕТЬ (Apple, Windows, IoT, Multicast, IPv6)",
         "ip_cidr": [
           "192.168.0.0/16", "10.0.0.0/8", "172.16.0.0/12", "100.64.0.0/10", 
           "127.0.0.0/8", "169.254.0.0/16", "224.0.0.0/4", "239.255.255.250/32", "255.255.255.255/32",
@@ -65,7 +64,6 @@
         "outbound": "direct"
       },
       {
-        "comment": "HEAVY TRAFFIC DIRECT (Apple, YouTube, Google Core, Telegram Core, Avito)",
         "domain_suffix": [
           "apple.com", "apple-dns.net", "apple-cloudkit.com", "apple-mapkit.com", "apple.news",
           "aaplimg.com", "cdn-apple.com", "icloud.com", "icloud-content.com", "mzstatic.com",
@@ -82,7 +80,6 @@
         "outbound": "direct"
       },
       {
-        "comment": "АППАРАТНЫЙ ОТБРОС UDP-СПАМА (Meta + Yandex + VK) - Экономия батареи",
         "ip_cidr": [
           "31.13.0.0/16", "157.240.0.0/16", "179.60.192.0/22", "185.60.216.0/22",
           "45.64.40.0/22", "57.144.0.0/16", "129.134.0.0/16", "173.252.64.0/18",
@@ -99,7 +96,6 @@
         "action": "reject"
       },
       {
-        "comment": "ОТБРОС UDP ДЛЯ ИИ (Принуждение к TCP для прокси)",
         "domain_suffix": [
           "openai.com", "chatgpt.com", "chat.openai.com", "oaistatic.com", "oaiusercontent.com",
           "anthropic.com", "claude.ai", "perplexity.ai", "pplx.ai",
@@ -117,7 +113,6 @@
         "action": "reject"
       },
       {
-        "comment": "ОТБРОС UDP ДЛЯ ОСНОВНОГО СПИСКА (Принуждение к TCP)",
         "domain_suffix": [
           "2ip.ru", "ajay.app", "eden-emu.dev", "4pda.ru", "4pda.to", "happymod.ph", "themoviedb.org", "tmdb.org",
           "rutracker.org", "rutracker.net", "rutracker.cc", "rutracker.wiki", "rutrk.org", "rutracker.nl", "rutracker.club", "rutracker.me", "rutracker.im", "rutracker.in", "rutracker.eu",
@@ -173,7 +168,6 @@
         "action": "reject"
       },
       {
-        "comment": "ОСНОВНОЙ СПИСОК ПРОКСИРОВАНИЯ ЧЕРЕЗ OPERA",
         "domain_suffix": [
           "t.me", "tx.me", "telegram.dog",
           "openai.com", "chatgpt.com", "chat.openai.com", "oaistatic.com", "oaiusercontent.com", "openaiapi-site.azureedge.net", "platform.openai.com", "openai.freshdesk.com", "openai.org", "openai.net",
@@ -187,7 +181,6 @@
           "kimi.moonshot.cn", "moonshot.cn", "hailuoai.com", "minimaxi.com", "yi.ai", "lingyiwanwu.com",
           "aleph-alpha.com", "deepl.com", "synthesia.io", "poolside.ai", "cursor.com", "cursor.sh", "cursor.ai",
           "codeium.com", "codeium.ai", "replit.com", "replit.ai", "dust.tt", "api-inference.huggingface.co",
-          
           "2ip.ru", "ajay.app", "eden-emu.dev", "4pda.ru", "4pda.to", "happymod.ph", "themoviedb.org", "tmdb.org",
           "rutracker.org", "rutracker.net", "rutracker.cc", "rutracker.wiki", "rutrk.org", "rutracker.nl", "rutracker.club", "rutracker.me", "rutracker.im", "rutracker.in", "rutracker.eu",
           "rutor.info", "rutor.is", "rutor.lib", "rutor.black", "rutor.cc", "rutor.in", "rutor.ru", "rutor.xyz", "rutor.top", "rutor.mirror", "rutor.club",
