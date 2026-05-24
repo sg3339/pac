@@ -57,7 +57,7 @@
       },
       {
         "ip_cidr": [
-          "192.168.0.0/16", "10.0.0.0/8", "172.16.0.0/12", "100.64.0.0/10", 
+          "192.168.0.0/16", "10.0.0.0/8", "172.16.0.0/12", "100.64.0.0/10",
           "127.0.0.0/8", "169.254.0.0/16", "224.0.0.0/4", "239.255.255.250/32", "255.255.255.255/32",
           "::1/128", "fe80::/10", "fc00::/7", "ff00::/8"
         ],
@@ -97,23 +97,18 @@
       },
       {
         "domain_suffix": [
-          "openai.com", "chatgpt.com", "chat.openai.com", "oaistatic.com", "oaiusercontent.com",
-          "anthropic.com", "claude.ai", "perplexity.ai", "pplx.ai",
-          "copilot.microsoft.com", "edgeservices.bing.com", "sydney.bing.com",
+          "t.me", "tx.me", "telegram.dog",
+          "openai.com", "chatgpt.com", "chat.openai.com", "oaistatic.com", "oaiusercontent.com", "openaiapi-site.azureedge.net", "platform.openai.com", "openai.freshdesk.com", "openai.org", "openai.net",
+          "anthropic.com", "claude.ai", "anthropic-api.com", "anthropic.org", "anthropic.io",
+          "perplexity.ai", "pplx.ai",
+          "copilot.microsoft.com", "edgeservices.bing.com", "sydney.bing.com", "designer.microsoft.com", "bing.com", "bing.net", "bing.ai",
           "grok.com", "x.ai", "x.com", "twitter.com", "twimg.com", "t.co", "tweetdeck.com", "twitpic.com",
-          "meta.ai", "huggingface.co", "hf.co", "mistral.ai", "chat.mistral.ai", "midjourney.com", "cohere.com", "stability.ai",
-          "deepseek.com", "yiyan.baidu.com", "ernie.baidu.com", "tongyi.aliyun.com", "qianwen.aliyun.com",
+          "meta.ai", "huggingface.co", "hf.co", "mistral.ai", "chat.mistral.ai", "console.mistral.ai", "midjourney.com", "midjourney.ai", "cohere.com", "stability.ai",
+          "deepseek.com", "deepseek.ai", "yiyan.baidu.com", "ernie.baidu.com", "tongyi.aliyun.com", "qianwen.aliyun.com",
           "hunyuan.tencent.com", "doubao.com", "chatglm.cn", "zhipuai.cn", "bigmodel.cn",
           "kimi.moonshot.cn", "moonshot.cn", "hailuoai.com", "minimaxi.com", "yi.ai", "lingyiwanwu.com",
-          "aleph-alpha.com", "deepl.com", "synthesia.io", "poolside.ai", "cursor.com", "cursor.sh",
-          "codeium.com", "replit.com", "dust.tt", "console.mistral.ai", "api-inference.huggingface.co",
-          "openai.org", "openai.net", "anthropic.org", "anthropic.io", "bard.ai", "bing.ai", "midjourney.ai", "deepseek.ai", "cursor.ai", "codeium.ai", "replit.ai"
-        ],
-        "network": "udp",
-        "action": "reject"
-      },
-      {
-        "domain_suffix": [
+          "aleph-alpha.com", "deepl.com", "synthesia.io", "poolside.ai", "cursor.com", "cursor.sh", "cursor.ai",
+          "codeium.com", "codeium.ai", "replit.com", "replit.ai", "dust.tt", "api-inference.huggingface.co",
           "2ip.ru", "ajay.app", "eden-emu.dev", "4pda.ru", "4pda.to", "happymod.ph", "themoviedb.org", "tmdb.org",
           "rutracker.org", "rutracker.net", "rutracker.cc", "rutracker.wiki", "rutrk.org", "rutracker.nl", "rutracker.club", "rutracker.me", "rutracker.im", "rutracker.in", "rutracker.eu",
           "rutor.info", "rutor.is", "rutor.lib", "rutor.black", "rutor.cc", "rutor.in", "rutor.ru", "rutor.xyz", "rutor.top", "rutor.mirror", "rutor.club",
@@ -147,17 +142,6 @@
           "1fichier.com", "fex.net", "gofile.io", "mega.co.nz", "mega.io", "mega.nz", "mediafire.com", "rapidgator.net", "ufile.io", "megaupload.com", "megashare.com", "megaup.net", "mega4up.org", "megadl.fr", "megadl.es",
           "intel.com", "iobit.com", "iobit.net", "iobitdownloader.com", "ninite.com", "chocolatey.org", "github.com", "githubusercontent.com", "githubassets.com", "github.io", "sourceforge.net", "softpedia.com", "filehippo.com", "win-rar.com", "rarlab.com",
           "habr.com", "habr.ru", "habrastorage.org", "hsto.org", "habracdn.net", "habrahabr.ru",
-          "openai.com", "chatgpt.com", "chat.openai.com", "oaistatic.com", "oaiusercontent.com", "openaiapi-site.azureedge.net", "platform.openai.com", "openai.freshdesk.com", "openai.org", "openai.net",
-          "anthropic.com", "claude.ai", "anthropic-api.com", "anthropic.org", "anthropic.io",
-          "perplexity.ai", "pplx.ai",
-          "copilot.microsoft.com", "edgeservices.bing.com", "sydney.bing.com", "designer.microsoft.com", "bing.com", "bing.net", "bing.ai",
-          "grok.com", "x.ai", "x.com", "twitter.com", "twimg.com", "t.co", "tweetdeck.com", "twitpic.com",
-          "meta.ai", "huggingface.co", "hf.co", "mistral.ai", "chat.mistral.ai", "console.mistral.ai", "midjourney.com", "midjourney.ai", "cohere.com", "stability.ai",
-          "deepseek.com", "deepseek.ai", "yiyan.baidu.com", "ernie.baidu.com", "tongyi.aliyun.com", "qianwen.aliyun.com",
-          "hunyuan.tencent.com", "doubao.com", "chatglm.cn", "zhipuai.cn", "bigmodel.cn",
-          "kimi.moonshot.cn", "moonshot.cn", "hailuoai.com", "minimaxi.com", "yi.ai", "lingyiwanwu.com",
-          "aleph-alpha.com", "deepl.com", "synthesia.io", "poolside.ai", "cursor.com", "cursor.sh", "cursor.ai",
-          "codeium.com", "codeium.ai", "replit.com", "replit.ai", "dust.tt", "api-inference.huggingface.co",
           "rezka.ag", "hdrezka.ag", "rezka.uz", "hdrezka.uz", "rezka.sh", "hdrezka.sh", "rezka.io", "hdrezka.io", "rezka.my", "hdrezka.my",
           "lostfilm.tv", "lostfilm.run", "lostfilm.win", "lostfilm.top",
           "seasonvar.ru", "seasonvar.net", "seasonvar.online",
