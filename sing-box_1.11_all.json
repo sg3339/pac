@@ -6,14 +6,14 @@
   "dns": {
     "servers": [
       {
-        "tag": "comss",
-        "address": "https://dns.comss.one/dns-query",
+        "tag": "cloudflare",
+        "address": "https://cloudflare-dns.com/dns-query",
         "address_resolver": "bootstrap",
         "detour": "direct"
       },
       {
         "tag": "bootstrap",
-        "address": "83.220.169.155",
+        "address": "1.1.1.1",
         "detour": "direct"
       }
     ],
