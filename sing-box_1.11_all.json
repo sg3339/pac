@@ -6,7 +6,7 @@
   "dns": {
     "servers": [
       {
-        "tag": "google",
+        "tag": "google-doh",
         "address": "https://dns.google/dns-query",
         "address_resolver": "google-udp",
         "detour": "direct"
@@ -70,6 +70,10 @@
           "itunes.com", "me.com", "mac.com", "shazam.com", "darksky.net"
         ],
         "outbound": "direct"
+      },
+      {
+        "network": "udp",
+        "action": "reject"
       }
     ],
     "final": "opera-proxy",
