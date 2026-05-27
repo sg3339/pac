@@ -19,8 +19,10 @@
         "server": "83.220.169.155"
       }
     ],
-    "final": "comss",
-    "strategy": "ipv4_only"
+    "independent_cache": true,
+    "disable_cache": false,
+    "strategy": "prefer_ipv4",
+    "final": "comss"
   },
   "inbounds": [
     {
