@@ -50,7 +50,6 @@
   "route": {
     "auto_detect_interface": true,
     "default_domain_resolver": "bootstrap",
-    "override_destination": true,
     "rule_set": [
       {
         "tag": "opera-list",
