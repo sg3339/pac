@@ -29,7 +29,7 @@
       "type": "tun",
       "tag": "tun-in",
       "address": "172.19.0.1/30",
-      "mtu": 1400,
+      "mtu": 1500,
       "auto_route": true,
       "strict_route": false,
       "stack": "system"
@@ -58,17 +58,17 @@
           {
             "domain_suffix": [
               "t.me", "tx.me", "telegram.dog",
-              "openai.com", "chatgpt.com", "chat.openai.com", "oaistatic.com", "oaiusercontent.com", "openaiapi-site.azureedge.net", "platform.openai.com", "openai.freshdesk.com", "openai.org", "openai.net",
+              "openai.com", "chatgpt.com", "oaistatic.com", "oaiusercontent.com", "openaiapi-site.azureedge.net", "openai.freshdesk.com", "openai.org", "openai.net",
               "anthropic.com", "claude.ai", "anthropic-api.com", "anthropic.org", "anthropic.io",
               "perplexity.ai", "pplx.ai",
               "copilot.microsoft.com", "edgeservices.bing.com", "sydney.bing.com", "designer.microsoft.com", "bing.com", "bing.net", "bing.ai",
               "grok.com", "x.ai", "x.com", "twitter.com", "twimg.com", "t.co", "tweetdeck.com", "twitpic.com",
-              "meta.ai", "huggingface.co", "hf.co", "mistral.ai", "chat.mistral.ai", "console.mistral.ai", "midjourney.com", "midjourney.ai", "cohere.com", "stability.ai",
+              "meta.ai", "huggingface.co", "hf.co", "mistral.ai", "midjourney.com", "midjourney.ai", "cohere.com", "stability.ai",
               "deepseek.com", "deepseek.ai", "yiyan.baidu.com", "ernie.baidu.com", "tongyi.aliyun.com", "qianwen.aliyun.com",
               "hunyuan.tencent.com", "doubao.com", "chatglm.cn", "zhipuai.cn", "bigmodel.cn",
               "kimi.moonshot.cn", "moonshot.cn", "hailuoai.com", "minimaxi.com", "yi.ai", "lingyiwanwu.com",
               "aleph-alpha.com", "deepl.com", "synthesia.io", "poolside.ai", "cursor.com", "cursor.sh", "cursor.ai",
-              "codeium.com", "codeium.ai", "replit.com", "replit.ai", "dust.tt", "api-inference.huggingface.co",
+              "codeium.com", "codeium.ai", "replit.com", "replit.ai", "dust.tt",
               "2ip.ru", "ajay.app", "eden-emu.dev", "4pda.ru", "4pda.to", "happymod.ph", "themoviedb.org", "tmdb.org",
               "rutracker.org", "rutracker.net", "rutracker.cc", "rutracker.wiki", "rutrk.org", "rutracker.nl", "rutracker.club", "rutracker.me", "rutracker.im", "rutracker.in", "rutracker.eu",
               "rutor.info", "rutor.is", "rutor.lib", "rutor.black", "rutor.cc", "rutor.in", "rutor.ru", "rutor.xyz", "rutor.top", "rutor.mirror", "rutor.club",
@@ -121,13 +121,12 @@
               "aaplimg.com", "cdn-apple.com", "icloud.com", "icloud-content.com", "mzstatic.com",
               "itunes.com", "me.com", "mac.com", "shazam.com", "darksky.net",
               "youtube.com", "youtu.be", "googlevideo.com", "ytimg.com", "ggpht.com",
-              "wide-youtube.l.google.com", "youtube-nocookie.com", "youtube-ui.l.google.com",
-              "youtube.googleapis.com", "youtubeembeddedplayer.googleapis.com", "youtubei.googleapis.com",
-              "youtubekids.com", "yt.be", "withyoutube.com", "youtubeeducation.com",
+              "youtube-nocookie.com", "youtubekids.com", "yt.be", "withyoutube.com", "youtubeeducation.com",
               "youtubefanfest.com", "youtubegaming.com", "youtubego.com", "youtubemobilesupport.com",
-              "yt3.googleusercontent.com", "googleusercontent.com", "gstatic.com", "googleapis.com", "google.com",
+              "googleusercontent.com", "gstatic.com", "googleapis.com", "google.com",
               "telegram.org", "telegra.ph", "tdesktop.com", "telesco.pe", "telegram.space", "telegram.download", "tg.dev",
-              "avito.ru", "avito.st", "avito.com", "avito.tech", "avito.am", "avito.ma", "avito.uz", "avito.global", "avito-careers.com", "avito-portal.com"
+              "avito.ru", "avito.st", "avito.com", "avito.tech", "avito.am", "avito.ma", "avito.uz", "avito.global", "avito-careers.com", "avito-portal.com",
+              "mds.yandex.net"
             ]
           }
         ]
@@ -135,7 +134,9 @@
     ],
     "rules": [
       {
-        "action": "sniff"
+        "action": "sniff",
+        "protocol": "tcp",
+        "port": 443
       },
       {
         "action": "hijack-dns",
