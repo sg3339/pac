@@ -135,7 +135,9 @@
     ],
     "rules": [
       {
-        "action": "sniff"
+        "action": "sniff",
+        "protocol": "tcp",
+        "port": 443
       },
       {
         "action": "hijack-dns",
