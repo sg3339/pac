@@ -6,19 +6,21 @@
   "dns": {
     "servers": [
       {
-        "tag": "cloudflare",
-        "address": "https://cloudflare-dns.com/dns-query",
+        "tag": "comss",
+        "address": "https://dns.comss.one/dns-query",
         "address_resolver": "bootstrap",
         "detour": "direct"
       },
       {
         "tag": "bootstrap",
-        "address": "1.1.1.1",
+        "address": "83.220.169.155",
         "detour": "direct"
       }
     ],
+    "independent_cache": true,
     "disable_cache": false,
-    "strategy": "ipv4_only"
+    "strategy": "prefer_ipv4",
+    "final": "comss"
   },
   "inbounds": [
     {
