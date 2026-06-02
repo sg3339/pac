@@ -1,0 +1,80 @@
+{
+  "log": {
+    "level": "warn",
+    "timestamp": true
+  },
+  "dns": {
+    "servers": [
+      {
+        "tag": "comss",
+        "type": "https",
+        "server": "dns.comss.one",
+        "server_port": 443,
+        "path": "/dns-query",
+        "domain_resolver": "bootstrap"
+      },
+      {
+        "tag": "bootstrap",
+        "type": "udp",
+        "server": "83.220.169.155"
+      }
+    ],
+    "independent_cache": true,
+    "disable_cache": false,
+    "strategy": "prefer_ipv4",
+    "final": "comss"
+  },
+  "inbounds": [
+    {
+      "type": "tun",
+      "tag": "tun-in",
+      "address": "172.19.0.1/30",
+      "mtu": 1500,
+      "auto_route": true,
+      "strict_route": false,
+      "stack": "system"
+    }
+  ],
+  "outbounds": [
+    {
+      "type": "direct",
+      "tag": "direct"
+    },
+    {
+      "type": "http",
+      "tag": "opera-proxy",
+      "server": "192.168.0.30",
+      "server_port": 18080
+    }
+  ],
+  "route": {
+    "auto_detect_interface": true,
+    "default_domain_resolver": "bootstrap",
+    "rules": [
+      {
+        "action": "sniff"
+      },
+      {
+        "action": "hijack-dns",
+        "protocol": "dns"
+      },
+      {
+        "action": "hijack-dns",
+        "port": 53
+      },
+      {
+        "ip_cidr": [
+          "192.168.0.0/16", "10.0.0.0/8", "172.16.0.0/12", "100.64.0.0/10",
+          "127.0.0.0/8", "169.254.0.0/16", "224.0.0.0/4", "239.255.255.250/32", "255.255.255.255/32",
+          "::1/128", "fe80::/10", "fc00::/7", "ff00::/8"
+        ],
+        "outbound": "direct"
+      },
+      {
+        "network": "udp",
+        "action": "reject"
+      }
+    ],
+    "final": "opera-proxy"
+  }
+}
